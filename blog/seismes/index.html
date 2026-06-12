@@ -1,73 +1,16 @@
 <!DOCTYPE html><html lang="fr"><head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Séismes récents en France · moniteur sismique</title><meta name="description" content="Séismes récents en France du catalogue USGS, recoupés avec RéNaSS / BCSF — via EMSC. Magnitude, profondeur, lieu et pertinence géotechnique."><meta name="theme-color" content="#0A2540">
+<title>Séismes récents en France · moniteur sismique</title><link rel="preload" as="image" href="img/instrumentacion-geotecnica-langfr-2.webp" fetchpriority="high"><meta name="description" content="Séismes récents en France du catalogue USGS, recoupés avec RéNaSS / BCSF — via EMSC. Magnitude, profondeur, lieu et pertinence géotechnique."><meta name="theme-color" content="#0A2540">
 <link rel="canonical" href="https://integralgeotechnique.net/blog/seismes/">
 
-<link rel="stylesheet" href="/css/leaflet-cbb5.css"/>
-<style>:root{--primary:#0A2540;--accent:#1e3a5f;--bg:#f9fafb;--border:#e5e7eb;--muted:#64748b;--font-body:'Source Sans 3',sans-serif;--font-h:'Source Serif 4',Georgia,serif}
-*{box-sizing:border-box;margin:0;padding:0}body{font-family:var(--font-body);line-height:1.65;color:#1f2937;background:var(--bg)}a{color:var(--accent)}.container{max-width:1100px;margin:0 auto;padding:0 24px}
+<link rel="stylesheet" href="/css/leaflet-cbb5.css" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="/css/leaflet-cbb5.css"></noscript>
+<style>:root{--primary:#0A2540;--accent:#1e3a5f;--bg:#f9fafb;--border:#e5e7eb;--muted:#64748b;--font-body:system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;--font-h:system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;margin:0;padding:0}body{font-family:var(--font-body);line-height:1.65;color:#1f2937;background:var(--bg)}a{color:var(--accent)}.container{max-width:1100px;margin:0 auto;padding:0 24px}
 header{background:var(--primary);color:#fff;padding:18px 0}header .container{display:flex;align-items:center;justify-content:space-between}header a{color:#fff;text-decoration:none}header .brand{font-family:var(--font-h);font-size:1.2rem;font-weight:700}header nav{display:flex;gap:16px;font-size:.92rem}
 .hero{background:linear-gradient(135deg,#0A2540,#1e3a5f);color:#fff;padding:56px 0 36px}.hero h1{font-family:var(--font-h);font-size:2.2rem;margin-bottom:12px}.hero p{color:#bcd;max-width:720px}
 .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:16px;margin:24px 0}.stat{background:#fff;border:1px solid var(--border);border-radius:8px;padding:18px;text-align:center}.stat-num{font-size:1.8rem;font-weight:700;color:var(--primary);font-family:var(--font-h)}.stat-label{font-size:.82rem;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;margin-top:4px}
 main{padding:38px 0 60px}.posts{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:18px}footer{background:#0f172a;color:#cbd5e1;padding:26px 0;font-size:.88rem;margin-top:36px}footer a{color:#fff}</style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Blog", "name": "Séismes récents en France — moniteur sismique", "inLanguage": "fr", "url": "https://integralgeotechnique.net/blog/seismes/", "publisher": {"@type": "Organization", "name": "Intégral Géotechnique"}, "blogPost": {"@type": "ItemList", "numberOfItems": 10}}</script>
-<style id="ftr-fix">footer .container>div{min-width:0}footer p,footer a{overflow-wrap:anywhere;word-break:break-word}</style><!--selfhost-fonts--><link rel="preload" href="fonts/inter-400-latin.woff2" as="font" type="font/woff2" crossorigin fetchpriority="high"><style>@font-face {
-  font-family: 'Inter';
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url(fonts/inter-400-latin-ext.woff2) format('woff2');
-  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
-}@font-face {
-  font-family: 'Inter';
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url(fonts/inter-400-latin.woff2) format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}@font-face {
-  font-family: 'Inter';
-  font-style: normal;
-  font-weight: 600;
-  font-display: swap;
-  src: url(fonts/inter-600-latin-ext.woff2) format('woff2');
-  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
-}@font-face {
-  font-family: 'Inter';
-  font-style: normal;
-  font-weight: 600;
-  font-display: swap;
-  src: url(fonts/inter-600-latin.woff2) format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}@font-face {
-  font-family: 'Lora';
-  font-style: normal;
-  font-weight: 600;
-  font-display: swap;
-  src: url(fonts/lora-600-latin-ext.woff2) format('woff2');
-  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
-}@font-face {
-  font-family: 'Lora';
-  font-style: normal;
-  font-weight: 600;
-  font-display: swap;
-  src: url(fonts/lora-600-latin.woff2) format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}@font-face {
-  font-family: 'Lora';
-  font-style: normal;
-  font-weight: 700;
-  font-display: swap;
-  src: url(fonts/lora-700-latin-ext.woff2) format('woff2');
-  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
-}@font-face {
-  font-family: 'Lora';
-  font-style: normal;
-  font-weight: 700;
-  font-display: swap;
-  src: url(fonts/lora-700-latin.woff2) format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}</style></head><body><header><div class="container"><a href="/" class="brand">Intégral Géotechnique</a><nav><a href="/">Accueil</a><a href="/blog/seismes/">Séismes</a></nav></div></header>
+<style id="ftr-fix">footer .container>div{min-width:0}footer p,footer a{overflow-wrap:anywhere;word-break:break-word}</style><!--selfhost-fonts--><style></style></head><body><header><div class="container"><a href="/" class="brand">Intégral Géotechnique</a><nav><a href="/">Accueil</a><a href="/blog/seismes/">Séismes</a></nav></div></header>
 <section class="hero"><div class="container"><h1>Séismes récents en France</h1><p>Événements sismiques en France sur la période récente, avec les données du catalogue USGS et de l’autorité nationale RéNaSS / BCSF — via EMSC. Magnitude, profondeur, épicentre et contexte géotechnique.</p></div></section>
 <main><div class="container"><div class="stats">
 <div class="stat"><div class="stat-num">11</div><div class="stat-label">Séismes</div></div>
@@ -76,7 +19,7 @@ main{padding:38px 0 60px}.posts{display:grid;grid-template-columns:repeat(auto-f
 <div class="stat"><div class="stat-num">26 Apr</div><div class="stat-label">Dernier</div></div></div>
 <h2 style="font-family:Georgia,serif;margin:24px 0 12px;border-bottom:2px solid #0A2540;padding-bottom:6px;display:inline-block">Carte des épicentres</h2>
 <div id="s-map" style="height:460px;width:100%;border-radius:12px;border:1px solid #e5e7eb;margin-bottom:30px"></div>
-<script src="/js/leaflet-cbb5.js"></script>
+<script src="/js/leaflet-cbb5.js" defer></script>
 <script>(function(){var el=document.getElementById('s-map');if(!el||!window.L)return;var map=L.map('s-map').setView([46.0,2.5],4);
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{attribution:'&copy; OSM',maxZoom:12}).addTo(map);
 var marks=[[47.1021,9.4138,4.2,"Switzerland","seisme-switzerland-m4-2-26-avr-2026"],
